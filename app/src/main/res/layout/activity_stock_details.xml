@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.udacity.stockhawk.ui.StockDetailsActivity.StockDetailsActivity">
+
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:id="@+id/details_symbol"
+            style="@style/StockSymbolTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:textSize="25sp"
+            tools:text="GOOG" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/details_price"
+                style="@style/BidPriceTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                tools:text="1000.00" />
+
+            <TextView
+                android:id="@+id/details_percentage_change"
+                style="@style/PercentChangeTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/percent_change_pill_green"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                tools:text="100%" />
+
+            <TextView
+                android:id="@+id/details_absolute_change"
+                style="@style/PercentChangeTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/percent_change_pill_green"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                tools:text="100%" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<com.jjoe64.graphview.GraphView-->
+        <!--android:background="@android:color/darker_gray"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:id="@+id/graph"/>-->
+
+    <com.github.mikephil.charting.charts.LineChart
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:id="@+id/graph2"
+    />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/details_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

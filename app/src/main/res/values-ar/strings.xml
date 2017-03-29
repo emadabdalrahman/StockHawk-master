@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name"> الأسهم هوك </string>
+
+    <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
+
+    <string name="pref_stocks_key">stocks</string>
+
+
+    <string name="pref_display_mode_key">displayMode</string>
+    <string name="pref_display_mode_default">@string/pref_display_mode_percentage_key</string>
+
+    <string name="pref_display_mode_absolute_key">absolute</string>
+    <string name="pref_display_mode_percentage_key">percentage</string>
+
+    <string name="default_stocks_yahoo">YHOO</string>
+    <string name="default_stocks_apple">AAPL</string>
+    <string name="default_stocks_microsoft">MSFT</string>
+    <string name="default_stocks_facebook">FB</string>
+
+
+    <string name="action_change_units">@string/pref_display_mode_key</string>
+
+
+    <string name="dialog_title">اضافه سهم</string>
+    <string name="dialog_hint"> مثال (e.g. GOOG)</string>
+    <string name="dialog_cancel">الغاء</string>
+    <string name="dialog_add">اضافه</string>
+
+    <string name="error_no_network">الجهاز غير متصل بالانترنت ! سوف يتم تحميل الاسهم عند الاتصال مع الانترنت </string>
+    <string name="error_no_stocks">لم يتم اضافه اسهم ! اضغط على زر عمل العائمة لإضافة واحد. </string>
+
+    <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
+    <string name="toast_no_connectivity">سوف تيم اعاده التحميل عندما يكون الانترنت متاح</string>
+
+    <string name="stock_not_found">لا يمكنني ايجاد هذا السهم</string>
+</resources>
