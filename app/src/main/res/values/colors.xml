@@ -10,4 +10,6 @@
 
     <color name="widget_background">#86000000</color>
 
+    <color name="alpha">#00000000</color>
+
 </resources>
