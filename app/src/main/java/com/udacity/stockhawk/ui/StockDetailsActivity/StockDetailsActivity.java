@@ -1,6 +1,7 @@
 package com.udacity.stockhawk.ui.StockDetailsActivity;
 
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -55,33 +56,23 @@ public class StockDetailsActivity extends AppCompatActivity {
         stockData = getStockData();
         initializeHeader();
 
-//        GraphView graphView = (GraphView) findViewById(R.id.graph);
-//        DataPoint[] dataPoint = new DataPoint[stockData.getStockHistories().size()];
-//        for (int i = 0; i < stockData.getStockHistories().size(); i++) {
-//            Date date = stockData.getStockHistories().get(i).getTime();
-//            String price = stockData.getStockHistories().get(i).getClosedAt();
-//            Double x = Double.parseDouble(price);
-//            dataPoint[i] = new DataPoint(x,x);
-//        }
-//        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoint);
-//        graphView.addSeries(series);
-   //     graphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-   //     graphView.getGridLabelRenderer().setNumHorizontalLabels(4);
-   ////     graphView.getViewport().setMinX(stockData.getStockHistories().get(0).getTime().getTime());
-   //     graphView.getViewport().setMaxX(stockData.getStockHistories().get(104).getTime().getTime());
-      //  graphView.getViewport().setXAxisBoundsManual(true);
-
-
-//        LineChart lineChart = (LineChart) findViewById(R.id.graph2);
-//        ArrayList<Entry> entries = new ArrayList<>();
-//        for (int i = 0; i < stockData.getStockHistories().size(); i++) {
-//            String price = stockData.getStockHistories().get(i).getClosedAt();
-//            Float x = Float.parseFloat(price);
-//            entries.add(new Entry(i,x));
-//        }
-//        LineDataSet dataSet = new LineDataSet(entries, "Days in a month");
-//        LineData data = new LineData(dataSet);
-//        lineChart.setData(data);
+        GraphView graphView = (GraphView) findViewById(R.id.graph);
+        DataPoint[] dataPoint = new DataPoint[stockData.getStockHistories().size()];
+        for (int i = 0; i < stockData.getStockHistories().size(); i++) {
+            String price = stockData.getStockHistories().get(i).getClosedAt();
+            Double x = Double.parseDouble(price);
+            dataPoint[i] = new DataPoint(i,x);
+        }
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoint);
+        graphView.addSeries(series);
+        graphView.getViewport().setScrollable(true);
+        graphView.getViewport().setScrollableY(true);
+        graphView.getViewport().setScalable(true);
+        graphView.getViewport().setScalableY(true);
+        graphView.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
+        graphView.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
+        graphView.getGridLabelRenderer().setGridColor(Color.WHITE);
+        graphView.getGridLabelRenderer().setHumanRounding(false);
 
 
         initializeRecyclerView();

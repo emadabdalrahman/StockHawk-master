@@ -71,7 +71,7 @@ public class AddStockDialog extends DialogFragment {
     }
 
     private void addStock() {
-
+        final String massage = getString(R.string.stock_not_found);
         final Activity parent = getActivity();
         FindStackAsyncTask findStackAsyncTask = new FindStackAsyncTask() {
             @Override
@@ -83,7 +83,8 @@ public class AddStockDialog extends DialogFragment {
                     }
                     dismissAllowingStateLoss();
                 } else {
-                    Toast.makeText(parent,"can't find",Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(parent,massage,Toast.LENGTH_SHORT).show();
                 }
 
             }
