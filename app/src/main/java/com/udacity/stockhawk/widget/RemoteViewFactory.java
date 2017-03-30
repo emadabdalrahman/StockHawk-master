@@ -69,25 +69,25 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
     @Override
     public RemoteViews getViewAt(int position) {
 
-        RemoteViews views = new RemoteViews(mContext.getPackageName(), R.layout.list_item_quote );
+        RemoteViews views ;
 
         mCursor.moveToPosition(position);
-        views.setTextViewText(R.id.symbol,mCursor.getString(Contract.Quote.POSITION_SYMBOL));
-        views.setTextViewText(R.id.price,dollarFormat.format(mCursor.getFloat(Contract.Quote.POSITION_PRICE)));
 
         float rawAbsoluteChange = mCursor.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
         float percentageChange = mCursor.getFloat(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
 
-//        if (rawAbsoluteChange > 0) {
-//            views.setImageViewResource(R.id.change,R.drawable.percent_change_pill_green);
-//        } else {
-//            views.setImageViewResource(R.id.change,R.drawable.percent_change_pill_red);
-//        }
-
-//        String H = mCursor.getString(Contract.Quote.POSITION_HISTORY);
-
         String change = dollarFormatWithPlus.format(rawAbsoluteChange);
         String percentage = percentageFormat.format(percentageChange / 100);
+
+        if (rawAbsoluteChange > 0) {
+            views = new RemoteViews(mContext.getPackageName(), R.layout.widget_list_item_quote_green );
+        } else {
+            views = new RemoteViews(mContext.getPackageName(), R.layout.widget_list_item_quote_red );
+        }
+
+
+        views.setTextViewText(R.id.symbol,mCursor.getString(Contract.Quote.POSITION_SYMBOL));
+        views.setTextViewText(R.id.price,dollarFormat.format(mCursor.getFloat(Contract.Quote.POSITION_PRICE)));
 
         if (PrefUtils.getDisplayMode(mContext)
                 .equals(mContext.getString(R.string.pref_display_mode_absolute_key))) {
@@ -98,7 +98,6 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
 
         Intent detailsIntent = new Intent(mContext, StockDetailsActivity.class);
         detailsIntent.putExtra("symbol",mCursor.getString(Contract.Quote.POSITION_SYMBOL));
-      //  PendingIntent pendingIntent = PendingIntent.getActivity(mContext,0,detailsIntent,0);
 
         views.setOnClickFillInIntent(R.id.list_item_frame,detailsIntent);
 
@@ -112,7 +111,7 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
 
     @Override
     public int getViewTypeCount() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -124,4 +123,5 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
     public boolean hasStableIds() {
         return false;
     }
+
 }
